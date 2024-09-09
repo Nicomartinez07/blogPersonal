@@ -1,0 +1,97 @@
+:root {
+  --bg-color: #f2f2f2;
+  --text-color: #ffffff;
+  --header-footer-bg-color: #2f343d;
+  --header-footer-text-color: white;
+  --link-color: black;
+  --card-bg-color: #f4f4f4;
+  text-align: center;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+header,
+footer {
+  background-color: var(--header-footer-bg-color);
+  padding: 1rem;
+  color: var(--header-footer-text-color);
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  unicode-bidi: isolate;
+}
+
+/*----------------------------------------------------------------*/
+
+/* Estilos generales para el tema claro */
+.light-theme {
+  background-color: #f2f2f2;
+  color: #2f333a;
+}
+
+/* Estilos generales para el tema oscuro */
+.dark-theme {
+  background-color: #2f333a;
+  color: white;
+}
+
+/* Estilos específicos para los componentes que necesiten */
+button {
+  margin: 10px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.light-theme button {
+  background-color: #ddd;
+  color: #2f333a;
+}
+
+.dark-theme button {
+  background-color: #2f333a;
+  color: #ddd;
+}
+
+/* Estilos para el tema claro */
+.light-header {
+  background-color: #f2f2f2;
+  color: #2f333a;
+}
+
+.light-footer {
+  background-color: #f2f2f2;
+  color: #2f333a;
+}
+
+/* Estilos para el tema oscuro */
+.dark-header {
+  background-color: #2f333a;
+  color: #f2f2f2;
+}
+
+.dark-footer {
+  background-color: #2f333a;
+  color: #f2f2f2;
+}
