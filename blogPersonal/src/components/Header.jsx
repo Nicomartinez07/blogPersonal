@@ -3,7 +3,7 @@ import React from "react";
 const Header = ({ isDarkMode }) => {
   return (
     <header className={isDarkMode ? "dark-header" : "light-header"}>
-      Blogs de viajes
+      Blogs de Anecdotas!!!
     </header>
   );
 };

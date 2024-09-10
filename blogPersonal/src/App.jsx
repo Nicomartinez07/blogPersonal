@@ -49,12 +49,12 @@ function App() {
       <Header isDarkMode={isDarkMode} />
 
       {/* Boton para cambiar tema*/}
-      <button onClick={toggleTheme}>
+      <button className="animated-button" onClick={toggleTheme}>
         Cambiar a {isDarkMode ? "Tema Claro" : "Tema Oscuro"}
       </button>
 
       {/* Boton para iniciar sesion*/}
-      <button onClick={handleLogin}>Inicio de sesion de Github</button>
+      <button className="animated-button" onClick={handleLogin}>Inicio de sesion de Github</button>
 
       {/* Parte del post con informacion respectiva*/}
       <Post

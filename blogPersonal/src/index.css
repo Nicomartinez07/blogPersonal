@@ -1,7 +1,8 @@
+
 :root {
-  --bg-color: #f2f2f2;
+  --bg-color: #2f333a;
   --text-color: #ffffff;
-  --header-footer-bg-color: #2f343d;
+  --header-footer-bg-color: #282c34;
   --header-footer-text-color: white;
   --link-color: black;
   --card-bg-color: #f4f4f4;
@@ -10,38 +11,25 @@
 
 body {
   font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
   background-color: var(--bg-color);
   color: var(--text-color);
 }
+
 
 header,
 footer {
   background-color: var(--header-footer-bg-color);
   padding: 1rem;
   color: var(--header-footer-text-color);
-  text-align: center;
-}
-
-nav ul {
-  list-style: none;
 }
 
 nav ul li {
   display: inline;
+  margin: 0 1rem;
 }
-
-nav ul li a {
-  color: var(--link-color);
-  text-decoration: none;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  unicode-bidi: isolate;
-}
-
 /*----------------------------------------------------------------*/
 
 /* Estilos generales para el tema claro */
@@ -95,3 +83,38 @@ button {
   background-color: #2f333a;
   color: #f2f2f2;
 }
+
+/* ---------------------------------------------------------------------------- */
+/* Button.css */
+.color-button {
+  background-color: var(--header-footer-bg-color--bg-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  width: 5%;
+}
+
+.color-button:hover {
+  transform: scale(1.1);
+  font-size: 115%;
+}
+
+.animated-button {
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.animated-button:hover {
+  transform: scale(1.1);
+  font-size: 85%;
+  background-color: grey;
+  color: black;
+}
+
+
+
