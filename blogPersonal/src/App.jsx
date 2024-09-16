@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Post from "./components/Post";
 import { supabase } from "./lib/helper/supabaseClient";
+import { posts } from "./utilies/mocks";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -54,19 +55,20 @@ function App() {
       </button>
 
       {/* Boton para iniciar sesion*/}
-      <button className="animated-button" onClick={handleLogin}>Inicio de sesion de Github</button>
+      <button className="animated-button" onClick={handleLogin}>
+        Inicio de sesion de Github
+      </button>
 
-      {/* Parte del post con informacion respectiva*/}
-      <Post
-        titulo={"Viaje a japon"}
-        link={
-          "https://imgs.search.brave.com/o2llqUmXoWPrGckgPGGpP1s6ei7S0AYzlxUgk_cIiKg/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5taW51dG91bm8u/Y29tL3AvYmVkYjQ3/MDFkYTM4MDg3NTBi/OThmN2Y0ZjZhMzMz/NjEvYWRqdW50b3Mv/MTUwL2ltYWdlbmVz/LzA0MS83NjAvMDA0/MTc2MDMzOC82MTB4/MC9zbWFydC9ib2Nh/LTIwMDNqcGcuanBn"
-        }
-        descripcion={"Boca fue a jugar la final de la intercontinental a japon"}
-        parrafo={
-          "Boca fue a jugar la final de la intercontinental a japon, en la cual se enfretaba al Real Madrid"
-        }
-      />
+      {/* Renderiza múltiples posts */}
+      {posts.map((post, index) => (
+        <Post
+          key={index}
+          titulo={post.titulo}
+          link={post.link}
+          descripcion={post.descripcion}
+          parrafo={post.parrafo}
+        />
+      ))}
 
       {/* Footer */}
       <Footer isDarkMode={isDarkMode} />
