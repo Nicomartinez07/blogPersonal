@@ -12,6 +12,7 @@ function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  /* EJEMPLO VIEJO -------------------------------------------------------------------
   //la variable (user) va a ir el valor inicial que va a tomar el useState (null),
   const [user, setUser] = useState(null);
   //El setUser(funcion actualizadora del estado) la utilizaremos para modificar el efecto
@@ -33,15 +34,45 @@ function App() {
     };
     getSession();
   }, []);
+  --------------------------------------------------------------------*/
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const session = supabase.auth.getSession();
+    setUser(session?.user);
+
+    //Switch -> se aplican cuando tenemos que elegir entre ciertas opciones
+    //dependiendo de la expresion que evalua acciona de cierta manera
+    const {
+      data: { subscription }, //estar subscrito a algo significa estar esperando un evento
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      switch (event) {
+        case "SIGNED_IN":
+          setUser(session?.user);
+          break;
+        case "SIGNED_OUT":
+          setUser(null);
+          break;
+        default:
+          console.log("caso no estimado");
+      }
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const handleLogin = async () => {
     //Pide el singInWithOAuth y despues destructuramos solamente el error
-    const { error } = await supabase.auth.signInWithOAuth({
+    await supabase.auth.signInWithOAuth({
       provider: "github", //establece a github para vincuar
     });
-    if (error) {
-      console.log(error); //si tira error lo muestra
-    }
+  };
+
+  const handleLogOut = async () => {
+    await supabase.auth.signOut();
   };
 
   return (
@@ -54,10 +85,17 @@ function App() {
         Cambiar a {isDarkMode ? "Tema Claro" : "Tema Oscuro"}
       </button>
 
+      {user ? (
+        <button className="animated-button" onClick={handleLogOut}>
+          Cerrar sesion de github
+        </button>
+      ) : (
+        <button className="animated-button" onClick={handleLogin}>
+          Iniciar sesion con Github
+        </button>
+      )}
+
       {/* Boton para iniciar sesion*/}
-      <button className="animated-button" onClick={handleLogin}>
-        Inicio de sesion de Github
-      </button>
 
       {/* Renderiza múltiples posts */}
       {posts.map((post, index) => (
